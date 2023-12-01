@@ -1,0 +1,53 @@
+{
+    "name": "tobento/app-schedule",
+    "type": "library",
+    "description": "App schedule support.",
+    "keywords": [
+        "tobento",
+        "package",
+        "app",
+        "schedule",
+        "task"
+	],
+    "homepage": "https://www.tobento.ch",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tobias Strub",
+            "email": "info@tobento.ch",
+            "homepage": "https://www.tobento.ch"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=8.0",
+        "tobento/app": "^1.0.7",
+        "tobento/app-console": "^1.0",
+        "tobento/app-event": "^1.0",
+        "tobento/app-cache": "^1.0",
+        "tobento/app-mail": "^1.0",
+        "tobento/service-schedule": "^1.0",
+        "symfony/process": "^4.4|^5.4|^6.0",
+        "guzzlehttp/guzzle": "^7.8"
+    },  
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "vimeo/psalm": "^4.0",
+        "tobento/service-filesystem": "^1.0.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tobento\\App\\Schedule\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tobento\\App\\Schedule\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit --testdox --colors=always",
+        "psalm": "vendor/bin/psalm"
+    }
+}
