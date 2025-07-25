@@ -27,6 +27,7 @@
         "tobento/app-event": "^1.0",
         "tobento/app-cache": "^1.0",
         "tobento/app-mail": "^1.0",
+        "tobento/app-notifier": "^1.0",
         "tobento/service-schedule": "^1.0",
         "symfony/process": "^4.4|^5.4|^6.0",
         "guzzlehttp/guzzle": "^7.8"
