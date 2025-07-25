@@ -15,6 +15,7 @@ namespace Tobento\App\Schedule\Test;
 
 use PHPUnit\Framework\TestCase;
 use Tobento\App\Schedule\Boot\Schedule;
+use Tobento\Service\Notifier\Recipient;
 use Tobento\Service\Schedule\ScheduleInterface;
 use Tobento\Service\Schedule\ScheduleProcessorInterface;
 use Tobento\Service\Schedule\TaskProcessorInterface;
@@ -169,16 +170,45 @@ class RunScheduledTasksTest extends TestCase
                 ))
                 ->id('foo')
                 ->after(new Parameter\Mail(
-                    message: (new Message())->to('admin@example.com'),
+                    message: (new Message())->from('dev@example.com')->to('admin@example.com'),
                 ))
             );
         });
 
         $executed = $app->get(ConsoleInterface::class)->execute(command: 'schedule:run');
         
-        // fails because of dsn, but it means mailing is supported.
+        $this->assertSame(0, $executed->code());
+        $this->assertStringContainsString('Success: task Closure with the id foo', $executed->output());
+    }
+    
+    public function testNotifyParameter()
+    {
+        $app = $this->createApp();
+        $app->boot(Schedule::class);
+        $app->booting();
+        
+        $app->on(ScheduleInterface::class, function(ScheduleInterface $schedule) {
+            $schedule->task(
+                (new Task\CallableTask(
+                    callable: static function (): string {
+                        return 'task output';
+                    },
+                ))
+                ->id('foo')
+                ->after(new Parameter\Notify(
+                    recipient: new Recipient(
+                        email: 'mail@example.com',
+                        channels: ['mail'],
+                    ),
+                ))
+            );
+        });
+
+        $executed = $app->get(ConsoleInterface::class)->execute(command: 'schedule:run');
+        
+        // fails because of from missing, but it means notify is supported.
         $this->assertSame(1, $executed->code());
-        $this->assertStringContainsString('Exception: The "smtp://user:pass@smtp.example.com:port" mailer DSN', $executed->output());
+        $this->assertStringContainsString('Exception: An email must have a "From" or a "Sender" header', $executed->output());
     }
     
     public function testWithoutOverlappingParameter()
