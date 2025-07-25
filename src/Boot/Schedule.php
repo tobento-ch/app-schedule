@@ -39,6 +39,7 @@ class Schedule extends Boot
         \Tobento\App\Event\Boot\Event::class,
         \Tobento\App\Cache\Boot\Cache::class,
         \Tobento\App\Mail\Boot\Mail::class,
+        \Tobento\App\Notifier\Boot\Notifier::class,
     ];
 
     /**
