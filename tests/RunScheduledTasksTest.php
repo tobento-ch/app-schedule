@@ -122,7 +122,7 @@ class RunScheduledTasksTest extends TestCase
         $app->on(ScheduleInterface::class, function(ScheduleInterface $schedule) {
             $schedule->task(
                 (new Task\PingTask(
-                    uri: 'https://example.com/ping',
+                    uri: 'http://example.com/ping',
                     method: 'GET',
                     options: [],
                 ))->id('foo')
@@ -132,7 +132,7 @@ class RunScheduledTasksTest extends TestCase
         $executed = $app->get(ConsoleInterface::class)->execute(command: 'schedule:run');
         
         $this->assertSame(1, $executed->code());
-        $this->assertStringContainsString('https://example.com/ping` resulted in a `404 Not Found` response', $executed->output());
+        $this->assertStringContainsString('Client error: `GET http://example.com/ping` resulted in a `404 Not Found', $executed->output());
     }
     
     public function testProcessTask()
