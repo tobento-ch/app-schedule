@@ -24,7 +24,7 @@ composer require tobento/app-schedule
 
 ## Requirements
 
-- PHP 8.0 or greater
+- PHP 8.4 or greater
 
 # Documentation
 
@@ -48,7 +48,7 @@ use Tobento\Service\Schedule\ScheduleProcessorInterface;
 use Tobento\Service\Schedule\TaskProcessorInterface;
 
 // Create the app
-$app = (new AppFactory())->createApp();
+$app = new AppFactory()->createApp();
 
 // Add directories:
 $app->dirs()
@@ -86,7 +86,7 @@ use Tobento\App\AppFactory;
 use Tobento\Service\Schedule\ScheduleInterface;
 
 // Create the app
-$app = (new AppFactory())->createApp();
+$app = new AppFactory()->createApp();
 
 // Add directories:
 $app->dirs()

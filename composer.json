@@ -1,5 +1,6 @@
 {
     "name": "tobento/app-schedule",
+    "version": "2.0",
     "type": "library",
     "description": "App schedule support.",
     "keywords": [
@@ -21,21 +22,21 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.0",
-        "tobento/app": "^1.0.7",
-        "tobento/app-console": "^1.0",
-        "tobento/app-event": "^1.0",
-        "tobento/app-cache": "^1.0",
-        "tobento/app-mail": "^1.0",
-        "tobento/app-notifier": "^1.0",
-        "tobento/service-schedule": "^1.0",
-        "symfony/process": "^4.4|^5.4|^6.0",
-        "guzzlehttp/guzzle": "^7.8"
+        "php": ">=8.4",
+        "tobento/app": "^2.0",
+        "tobento/app-console": "^2.0",
+        "tobento/app-event": "^2.0",
+        "tobento/app-cache": "^2.0",
+        "tobento/app-mail": "^2.0",
+        "tobento/app-notifier": "^2.0",
+        "tobento/service-schedule": "^2.0",
+        "symfony/process": "^7.3",
+        "guzzlehttp/guzzle": "^7.10"
     },  
     "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "vimeo/psalm": "^4.0",
-        "tobento/service-filesystem": "^1.0.5"
+        "phpunit/phpunit": "^12.3",
+        "vimeo/psalm": "^6.13",
+        "tobento/service-filesystem": "^2.0"
     },
     "autoload": {
         "psr-4": {
