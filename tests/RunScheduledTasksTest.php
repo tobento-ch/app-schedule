@@ -124,7 +124,6 @@ class RunScheduledTasksTest extends TestCase
                 (new Task\PingTask(
                     uri: 'http://example.com/ping',
                     method: 'GET',
-                    options: [],
                 ))->id('foo')
             );
         });
@@ -132,7 +131,10 @@ class RunScheduledTasksTest extends TestCase
         $executed = $app->get(ConsoleInterface::class)->execute(command: 'schedule:run');
         
         $this->assertSame(1, $executed->code());
-        $this->assertStringContainsString('Client error: `GET http://example.com/ping` resulted in a `404 Not Found', $executed->output());
+        $this->assertStringContainsString(
+            '[GET] http://example.com/ping with the id foo. Exception: Ping failed with status 404',
+            $executed->output()
+        );
     }
     
     public function testProcessTask()
