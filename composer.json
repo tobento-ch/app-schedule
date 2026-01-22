@@ -1,6 +1,6 @@
 {
     "name": "tobento/app-schedule",
-    "version": "2.0",
+    "version": "2.0.1",
     "type": "library",
     "description": "App schedule support.",
     "keywords": [
@@ -27,11 +27,11 @@
         "tobento/app-console": "^2.0",
         "tobento/app-event": "^2.0",
         "tobento/app-cache": "^2.0",
+        "tobento/app-http": "^2.0",
         "tobento/app-mail": "^2.0",
         "tobento/app-notifier": "^2.0",
         "tobento/service-schedule": "^2.0",
-        "symfony/process": "^7.3",
-        "guzzlehttp/guzzle": "^7.10"
+        "symfony/process": "^7.3"
     },  
     "require-dev": {
         "phpunit/phpunit": "^12.3",
