@@ -22,9 +22,6 @@ use Tobento\Service\Schedule\Schedule as ServiceSchedule;
 use Tobento\Service\Schedule\ScheduleInterface;
 use Tobento\Service\Console\ConsoleInterface;
 
-/**
- * Schedule
- */
 class Schedule extends Boot
 {
     public const INFO = [
@@ -36,6 +33,7 @@ class Schedule extends Boot
 
     public const BOOT = [
         \Tobento\App\Console\Boot\Console::class,
+        \Tobento\App\Http\Boot\Http::class,
         \Tobento\App\Event\Boot\Event::class,
         \Tobento\App\Cache\Boot\Cache::class,
         \Tobento\App\Mail\Boot\Mail::class,
