@@ -142,7 +142,7 @@ Furthermore, all the [Tasks](https://github.com/tobento-ch/service-schedule#task
 To run the scheduled tasks, add a cron configuration entry to your server that runs the schedule:run command every minute.
 
 ```
-* * * * * cd /path-to-your-project && php app schedule:run >> /dev/null 2>&1
+* * * * * cd /path-to-your-project && php ap schedule:run >> /dev/null 2>&1
 ```
 
 # Credits
